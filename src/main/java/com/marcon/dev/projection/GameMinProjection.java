@@ -1,4 +1,4 @@
-package com.marcon.dev;
+package com.marcon.dev.projection;
 
 public interface GameMinProjection {
     Long getId();

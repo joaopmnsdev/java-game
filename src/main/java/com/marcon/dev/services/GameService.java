@@ -1,6 +1,6 @@
 package com.marcon.dev.services;
 
-import com.marcon.dev.GameMinProjection;
+import com.marcon.dev.projection.GameMinProjection;
 import com.marcon.dev.dto.GameDTO;
 import com.marcon.dev.dto.GameMinDTO;
 import com.marcon.dev.entities.Game;

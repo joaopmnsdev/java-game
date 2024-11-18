@@ -1,7 +1,7 @@
 package com.marcon.dev.repositories;
 
 import java.util.List;
-import com.marcon.dev.GameMinProjection;
+import com.marcon.dev.projection.GameMinProjection;
 import com.marcon.dev.entities.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
