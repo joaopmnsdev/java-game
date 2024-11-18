@@ -1,5 +1,6 @@
 package com.marcon.dev.dto;
 
+import com.marcon.dev.GameMinProjection;
 import com.marcon.dev.entities.Game;
 
 public class GameMinDTO {
@@ -20,6 +21,14 @@ public class GameMinDTO {
         this.shortDescription = entity.getShortDescription();
         this.imgUrl = entity.getImgUrl();
         this.year = entity.getYear();
+    }
+
+    public GameMinDTO(GameMinProjection projection) {
+        this.id = projection.getId();
+        this.title = projection.getTitle();
+        this.shortDescription = projection.getShortDescription();
+        this.imgUrl = projection.getImgUrl();
+        this.year = projection.getYear();
     }
 
     public Long getId() {
