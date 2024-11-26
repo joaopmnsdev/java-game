@@ -17,6 +17,12 @@ O Projeto trata-se de uma API Web back-end, criada com Java Spring Boot, seguind
 # Modelo Conceitual
 ![ModeloConceitual](https://github.com/joaopmnsdev/java-game/blob/main/src/assets/ModeloConceitual.png)
 
+# Swagger API
+![SwaggerUm](https://github.com/joaopmnsdev/java-game/blob/main/src/assets/swaggerUm.jpg)
+
+## GET detalhes
+![SwaggerDois](https://github.com/joaopmnsdev/java-game/blob/main/src/assets/swaggerDois.jpg)
+
 # Como executar o projeto
 ```bash
 # clonar repositório
