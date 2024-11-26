@@ -1,0 +1,180 @@
+openapi: 3.0.1
+info:
+  title: Games and Lists API
+  description: API para gerenciar jogos e listas
+  version: 1.0.0
+  contact:
+    name: João Marcon
+    email: joaomarcon@exemplo.com
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:8080
+    description: Servidor local
+
+tags:
+  - name: Games
+    description: Endpoints relacionados aos jogos
+  - name: Lists
+    description: Endpoints relacionados às listas
+
+paths:
+  /games:
+    get:
+      tags:
+        - Games
+      summary: Lista todos os jogos
+      description: Retorna uma lista de jogos disponíveis.
+      responses:
+        '200':
+          description: Lista de jogos retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: Mass Effect Trilogy
+                    year:
+                      type: integer
+                      example: 2012
+                    imgUrl:
+                      type: string
+                      example: https://raw.githubusercontent.com/devsuperior/java-spring-dslist/main/resources/1.png
+                    shortDescription:
+                      type: string
+                      example: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse officiis corrupti unde repellat non quibusdam! Id nihil itaque ipsum!
+
+  /games/{id}:
+    get:
+      tags:
+        - Games
+      summary: Busca um jogo por ID
+      description: Retorna informações detalhadas de um jogo com base no ID fornecido.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do jogo
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Informações do jogo retornadas com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  title:
+                    type: string
+                    example: Mass Effect Trilogy
+                  year:
+                    type: integer
+                    example: 2012
+                  imgUrl:
+                    type: string
+                    example: https://raw.githubusercontent.com/devsuperior/java-spring-dslist/main/resources/1.png
+                  shortDescription:
+                    type: string
+                    example: Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse officiis corrupti unde repellat non quibusdam! Id nihil itaque ipsum!
+
+  /lists:
+    get:
+      tags:
+        - Lists
+      summary: Lista todas as listas
+      description: Retorna uma lista de listas disponíveis.
+      responses:
+        '200':
+          description: Lista de listas retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Aventura e RPG
+
+  /lists/{id}:
+    get:
+      tags:
+        - Lists
+      summary: Busca uma lista por ID
+      description: Retorna informações detalhadas de uma lista com base no ID fornecido.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da lista
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: Informações da lista retornadas com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  name:
+                    type: string
+                    example: Jogos de plataforma
+
+  /lists/{id}/replacement:
+    post:
+      tags:
+        - Lists
+      summary: Reordena itens de uma lista
+      description: Altera a ordem dos itens de uma lista, movendo de um índice para outro.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da lista
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        description: Índices de origem e destino
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sourceIndex:
+                  type: integer
+                  example: 3
+                destinationIndex:
+                  type: integer
+                  example: 1
+      responses:
+        '200':
+          description: Ordem dos itens alterada com sucesso
+        '400':
+          description: Requisição inválida
+        '404':
+          description: Lista não encontrada
